@@ -2,7 +2,9 @@
  * About Activity for credits
  */
 
-package com.quchen.flappycow;
+package com.digitaslbi.flappyunicorn;
+
+import com.digitaslbi.flappyunicorn.R;
 
 import android.app.Activity;
 import android.os.Bundle;

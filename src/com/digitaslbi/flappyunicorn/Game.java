@@ -2,33 +2,43 @@
  * The Game
  */
 
-package com.quchen.flappycow;
+package com.digitaslbi.flappyunicorn;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.AdSize;
-import com.google.android.gms.ads.AdView;
-import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesUtil;
+//import com.google.android.gms.ads.AdRequest;
+//import com.google.android.gms.ads.AdSize;
+//import com.google.android.gms.ads.AdView;
+//import com.google.android.gms.common.ConnectionResult;
+//import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.digitaslbi.flappyunicorn.R;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
+import android.content.Intent;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
 public class Game extends Activity implements OnDismissListener{
 	public static SoundPool soundPool = new SoundPool(5, AudioManager.STREAM_MUSIC,0);
 	public static MediaPlayer musicPlayer = null;
-	public static boolean musicShouldPlay = false;
+	public static boolean musicShouldPlay = true;
 	
 	/** time interval (ms) you have to press the backbutton twice in to exit */
 	private static final long DOUBLE_BACK_TIME = 1000;
+	private static final String TAG = "Game";
 	private long backPressed;
 	
 	private MyHandler handler;	// To do UI things from different threads
@@ -36,6 +46,8 @@ public class Game extends Activity implements OnDismissListener{
 	GameView view;
 	int points;
 	GameOverDialog gameOverDialog;
+	private SensorManager mSensorManager;
+	private Sensor mAccel;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +58,19 @@ public class Game extends Activity implements OnDismissListener{
 		setLayouts();
 		initHandler();
 		initMusicPlayer();
+		Log.d(TAG, "oncreate");
+		mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
+	    mAccel = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
+//	    mSensorManager.registerListener(this, mAccel, SensorManager.SENSOR_DELAY_NORMAL);
+	}
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if(keyCode == KeyEvent.KEYCODE_DPAD_CENTER){
+			this.view.player.onTab();
+			return true;
+		}
+		return false;
 	}
 	
 	private void initHandler(){
@@ -67,23 +92,23 @@ public class Game extends Activity implements OnDismissListener{
 		mainLayout.setOrientation(LinearLayout.VERTICAL);
 		
 		//------------ Ad ---------------
-		AdView adView = new AdView(this);
-		adView.setAdUnitId(getResources().getString(R.string.ad_unit_id));
-		adView.setAdSize(AdSize.BANNER);
+//		AdView adView = new AdView(this);
+//		adView.setAdUnitId(getResources().getString(R.string.ad_unit_id));
+//		adView.setAdSize(AdSize.BANNER);
 		//-------------------------------
 
-		mainLayout.addView(adView);
+//		mainLayout.addView(adView);
 		mainLayout.addView(view);
 		
 		setContentView(mainLayout);
 		
-		adView.loadAd(new AdRequest.Builder().build());
+//		adView.loadAd(new AdRequest.Builder().build());
 	}
 	
 	@Override
 	protected void onPause() {
-		view.pause();
-		musicPlayer.pause();
+//		view.pause();
+//		musicPlayer.pause();
 		super.onPause();
 	}
 
@@ -93,10 +118,10 @@ public class Game extends Activity implements OnDismissListener{
 		if(musicShouldPlay){
 			musicPlayer.start();
 		}
-		if(GooglePlayServicesUtil.isGooglePlayServicesAvailable(this) != ConnectionResult.SUCCESS){
-			Toast.makeText(this, "Please check your Google Services", Toast.LENGTH_LONG).show();
-//			finish();
-		}
+//		if(GooglePlayServicesUtil.isGooglePlayServicesAvailable(this) != ConnectionResult.SUCCESS){
+//			Toast.makeText(this, "Please check your Google Services", Toast.LENGTH_LONG).show();
+////			finish();
+//		}
 		super.onResume();
 	}
 	
@@ -111,7 +136,7 @@ public class Game extends Activity implements OnDismissListener{
 	}
 
 	public void gameOver(){
-//		Intent intent = new Intent("com.quchen.flappycow.GameOverScreen");
+//		Intent intent = new Intent("com.digitaslbi.flappyunicorn.GameOverScreen");
 //		intent.putExtra("points", points);
 //		startActivity(intent);
 //		finish();
@@ -142,7 +167,8 @@ public class Game extends Activity implements OnDismissListener{
 	}
 
 	@Override
-	public void onDismiss(DialogInterface dialog) {
-		finish();
+	public void onDismiss(DialogInterface arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 }

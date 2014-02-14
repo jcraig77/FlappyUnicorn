@@ -2,7 +2,7 @@
  * An obstacle: spider + logHead
  */
 
-package com.quchen.flappycow;
+package com.digitaslbi.flappyunicorn;
 
 import android.content.Context;
 import android.graphics.Canvas;

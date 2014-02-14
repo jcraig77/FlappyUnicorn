@@ -1,19 +1,22 @@
 /**
- * A spider with web
+ * A shopped wodden log
  */
-package com.quchen.flappycow;
+
+package com.digitaslbi.flappyunicorn;
+
+import com.digitaslbi.flappyunicorn.R;
 
 import android.content.Context;
 import android.graphics.Bitmap;
 
-public class Spider extends Sprite {
-	
+public class WoodLog extends Sprite {
+
 	public static Bitmap globalBitmap;
 
-	public Spider(GameView view, Context context) {
+	public WoodLog(GameView view, Context context) {
 		super(view, context);
 		if(globalBitmap == null){
-			globalBitmap = createBitmap(context.getResources().getDrawable(R.drawable.spider_full));
+			globalBitmap = createBitmap(context.getResources().getDrawable(R.drawable.log_full));
 		}
 		this.bitmap = globalBitmap;
 		this.width = this.bitmap.getWidth();
@@ -24,5 +27,4 @@ public class Spider extends Sprite {
 		this.x = x;
 		this.y = y;
 	}
-
 }

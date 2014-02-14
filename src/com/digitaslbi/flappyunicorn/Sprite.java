@@ -2,7 +2,7 @@
  * The template for every game object
  */
 
-package com.quchen.flappycow;
+package com.digitaslbi.flappyunicorn;
 
 import android.content.Context;
 import android.graphics.Bitmap;

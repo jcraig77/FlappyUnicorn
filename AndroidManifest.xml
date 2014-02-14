@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.quchen.flappycow"
+    package="com.digitaslbi.flappyunicorn"
     android:versionCode="10"
     android:versionName="1.81" >
 
     <uses-sdk
-        android:minSdkVersion="10"
-        android:targetSdkVersion="19" />
+        android:minSdkVersion="15"
+        android:targetSdkVersion="15" />
     
     <!-- Used to request banner and interstitial ads. -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -20,13 +20,19 @@
         android:label="@string/app_name"
         android:theme="@android:style/Theme.NoTitleBar.Fullscreen"> >
         
-        <meta-data android:name="com.google.android.gms.version"
-           android:value="@integer/google_play_services_version" />
+        <!-- <meta-data android:name="com.google.android.gms.version"
+           android:value="@integer/google_play_services_version" /> -->
         
         <activity
-            android:name="com.quchen.flappycow.MainActivity"
+            android:name="com.digitaslbi.flappyunicorn.MainActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="landscape" >
+            <intent-filter>
+                <action
+                	android:name="com.google.android.glass.action.VOICE_TRIGGER" />
+                <meta-data android:name="com.google.android.glass.VoiceTrigger"
+            		android:resource="@xml/voice_trigger_start" />
+            </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,27 +41,27 @@
         </activity>
         
         <activity
-            android:name=".Game"
+            android:name="com.digitaslbi.flappyunicorn.Game"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="landscape" >
             <intent-filter>
-                <action android:name="com.quchen.flappycow.Game" />
+                <action android:name="com.digitaslbi.flappyunicorn.Game" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         
         <activity
-            android:name=".About"
+            android:name="com.digitaslbi.flappyunicorn.About"
             android:label="@string/app_name"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="landscape" >
             <intent-filter>
-                <action android:name="com.quchen.flappycow.About" />
+                <action android:name="com.digitaslbi.flappyunicorn.About" />
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         
-        <meta-data android:name="com.google.android.gms.version"
-           android:value="@integer/google_play_services_version"/>
+        <!-- <meta-data android:name="com.google.android.gms.version"
+           android:value="@integer/google_play_services_version"/> -->
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>

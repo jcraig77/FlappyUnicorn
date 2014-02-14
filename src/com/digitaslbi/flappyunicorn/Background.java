@@ -2,7 +2,9 @@
  * Manages the Bitmap for the background: mountains and clouds
  */
 
-package com.quchen.flappycow;
+package com.digitaslbi.flappyunicorn;
+
+import com.digitaslbi.flappyunicorn.R;
 
 import android.content.Context;
 import android.graphics.Bitmap;

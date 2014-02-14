@@ -1,9 +1,12 @@
-package com.quchen.flappycow;
+package com.digitaslbi.flappyunicorn;
+
+import com.digitaslbi.flappyunicorn.R;
 
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Button;
@@ -18,6 +21,16 @@ public class MainActivity extends Activity {
 	ImageButton muteButton;
 
     @Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if(keyCode == KeyEvent.KEYCODE_DPAD_CENTER){
+			startActivity(new Intent("com.digitaslbi.flappyunicorn.Game"));
+			return true;
+		}
+		return false;
+	}
+
+
+	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -26,7 +39,7 @@ public class MainActivity extends Activity {
         ((ImageButton)findViewById(R.id.play_button)).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent("com.quchen.flappycow.Game"));
+				startActivity(new Intent("com.digitaslbi.flappyunicorn.Game"));
 			}
 		});
         
@@ -48,7 +61,7 @@ public class MainActivity extends Activity {
         ((Button)findViewById(R.id.about_button)).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				startActivity(new Intent("com.quchen.flappycow.About"));
+				startActivity(new Intent("com.digitaslbi.flappyunicorn.About"));
 			}
 		});
         

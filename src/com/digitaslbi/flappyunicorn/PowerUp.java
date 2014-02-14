@@ -1,4 +1,4 @@
-package com.quchen.flappycow;
+package com.digitaslbi.flappyunicorn;
 
 import android.content.Context;
 

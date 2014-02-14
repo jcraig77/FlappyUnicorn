@@ -1,4 +1,6 @@
-package com.quchen.flappycow;
+package com.digitaslbi.flappyunicorn;
+
+import com.digitaslbi.flappyunicorn.R;
 
 import android.app.Dialog;
 import android.content.SharedPreferences;

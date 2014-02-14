@@ -1,19 +1,22 @@
-package com.quchen.flappycow;
+package com.digitaslbi.flappyunicorn;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.digitaslbi.flappyunicorn.R;
 
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.hardware.SensorManager;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.View.OnTouchListener;
 
-public class GameView extends SurfaceView implements Runnable, OnTouchListener{
+public class GameView extends SurfaceView implements Runnable{
 	
 	public static final long UPDATE_INTERVAL = 30;	// milliseconds the thread sleeps after drawing
 
@@ -21,7 +24,7 @@ public class GameView extends SurfaceView implements Runnable, OnTouchListener{
 	private Thread t;
 	private SurfaceHolder holder;
 	volatile private boolean shouldRun = true;
-	private boolean showedTutorial = false;
+	private boolean showedTutorial = true;
 	
 	PlayableCharacter player;
 	private Background bg;
@@ -31,6 +34,7 @@ public class GameView extends SurfaceView implements Runnable, OnTouchListener{
 	
 	private PauseButton pauseButton;
 	private Tutorial tutorial;
+	private SensorManager mSensorManager;
 
 	public GameView(Context context) {
 		super(context);
@@ -42,28 +46,28 @@ public class GameView extends SurfaceView implements Runnable, OnTouchListener{
 		fg = new Frontground(this, context);
 		pauseButton = new PauseButton(this, context);
 		tutorial = new Tutorial(this, context);
-		
-		setOnTouchListener(this);
+				
+//		setOnTouchListener(this);
 	}
 	
-	@Override
-	public boolean onTouch(View v, MotionEvent event) {
-		if(event.getAction() == MotionEvent.ACTION_DOWN){
-			if(!shouldRun){
-				// Start game if it's paused
-				resumeAndKeepRunning();
-			}
-			
-			if(pauseButton.isTouching((int) event.getX(), (int) event.getY()) && this.shouldRun){
-				pause();
-			}else{
-				// Cow flap
-				this.player.onTab();
-			}
-		}
-		
-		return true;
-	}
+//	@Override
+//	public boolean onTouch(View v, MotionEvent event) {
+//		if(event.getAction() == MotionEvent.ACTION_DOWN){
+//			if(!shouldRun){
+//				// Start game if it's paused
+//				resumeAndKeepRunning();
+//			}
+//			
+//			if(pauseButton.isTouching((int) event.getX(), (int) event.getY()) && this.shouldRun){
+//				pause();
+//			}else{
+//				// Cow flap
+//				this.player.onTab();
+//			}
+//		}
+//		
+//		return true;
+//	}
 	
 	public void run() {
 		//draw at least once
@@ -114,16 +118,16 @@ public class GameView extends SurfaceView implements Runnable, OnTouchListener{
 	}
 	
 	public void pause(){
-		shouldRun = false;
-		while(t != null){
-			try {
-				t.join();
-				break;
-			} catch (InterruptedException e) {
-				e.printStackTrace();
-			}
-		}
-		t = null;
+//		shouldRun = false;
+//		while(t != null){
+//			try {
+//				t.join();
+//				break;
+//			} catch (InterruptedException e) {
+//				e.printStackTrace();
+//			}
+//		}
+//		t = null;
 	}
 	
 	public void resume(){

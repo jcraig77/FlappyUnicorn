@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <string name="start_stopwatch">start flappy unicorn</string>
     <string name="app_name">FlappyCow</string>
     <string name="ad_unit_id">ca-app-pub-5615758120938208/1207416779</string>
     <string name="current_score">Your score is</string>
