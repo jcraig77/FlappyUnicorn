@@ -5,7 +5,7 @@ I took [Flappy Cow](https://github.com/cubei/FlappyCow) changed it to Floppy Uni
 
 
 #### Screenshot
-![Sceenshot Flappy Unicorn](/graphics/unicorn_game.PNG) ![Sceenshot Flappy Cow](/graphics/unicorn_game.PNG)
+![Sceenshot Flappy Unicorn](/graphics/unicorn_game.PNG)
 
 ## License 
 * [MIT](http://opensource.org/licenses/MIT), see LICENSE file
