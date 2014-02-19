@@ -6,15 +6,15 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
-public class Cow extends PlayableCharacter {
+public class Unicorn extends PlayableCharacter {
 	private Rainbow rainbow;
 	public static Bitmap globalBitmap;
 	private static int sound = -1;
 
-	public Cow(GameView view, Context context) {
+	public Unicorn(GameView view, Context context) {
 		super(view, context);
 		if(globalBitmap == null){
-			globalBitmap = createBitmap(context.getResources().getDrawable(R.drawable.cow));
+			globalBitmap = createBitmap(context.getResources().getDrawable(R.drawable.unicorn));
 		}
 		this.bitmap = globalBitmap;
 		this.width = this.bitmap.getWidth();

@@ -41,7 +41,7 @@ public class GameView extends SurfaceView implements Runnable{
 		this.game = (Game) context;
 
 		holder = getHolder();
-		player = new Cow(this, context);
+		player = new Unicorn(this, context);
 		bg = new Background(this, context);
 		fg = new Frontground(this, context);
 		pauseButton = new PauseButton(this, context);

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">FlappyCow</string>
+    <string name="app_name">Flappy Unicorn</string>
     <string name="current_score">Dein Punktestand</string>
     <string name="best_score">Dein Rekord</string>
     <string name="about_button">Über</string>
