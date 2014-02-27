@@ -9,7 +9,7 @@ import android.graphics.Canvas;
 public class Unicorn extends PlayableCharacter {
 	private Rainbow rainbow;
 	public static Bitmap globalBitmap;
-	private static int sound = -1;
+	private static int sound = 1;
 
 	public Unicorn(GameView view, Context context) {
 		super(view, context);

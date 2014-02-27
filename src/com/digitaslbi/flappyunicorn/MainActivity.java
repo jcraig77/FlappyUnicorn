@@ -1,6 +1,7 @@
 package com.digitaslbi.flappyunicorn;
 
 import com.digitaslbi.flappyunicorn.R;
+import com.google.android.glass.app.Card;
 
 import android.os.Bundle;
 import android.app.Activity;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	public static final String medaille_save = "medaille_save";
@@ -25,6 +27,9 @@ public class MainActivity extends Activity {
 		if(keyCode == KeyEvent.KEYCODE_DPAD_CENTER){
 			startActivity(new Intent("com.digitaslbi.flappyunicorn.Game"));
 			return true;
+		}	
+		else if (keyCode == KeyEvent.KEYCODE_BACK){
+			finish();
 		}
 		return false;
 	}
@@ -33,6 +38,10 @@ public class MainActivity extends Activity {
 	@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Card card = new Card(this);
+		card.setText("Play Flappy Unicorn!");
+		card.setFootnote(R.string.app_name);
+		
         setContentView(R.layout.activity_main);
         
         ((ImageButton)findViewById(R.id.play_button)).setImageBitmap(Sprite.createBitmap(getResources().getDrawable(R.drawable.play_button), this));

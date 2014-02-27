@@ -34,7 +34,7 @@ import android.widget.Toast;
 public class Game extends Activity implements OnDismissListener{
 	public static SoundPool soundPool = new SoundPool(5, AudioManager.STREAM_MUSIC,0);
 	public static MediaPlayer musicPlayer = null;
-	public static boolean musicShouldPlay = true;
+	public static boolean musicShouldPlay = false;
 	
 	/** time interval (ms) you have to press the backbutton twice in to exit */
 	private static final long DOUBLE_BACK_TIME = 1000;
@@ -64,6 +64,11 @@ public class Game extends Activity implements OnDismissListener{
 //	    mSensorManager.registerListener(this, mAccel, SensorManager.SENSOR_DELAY_NORMAL);
 	}
 	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+	}
+
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if(keyCode == KeyEvent.KEYCODE_DPAD_CENTER){
@@ -129,6 +134,7 @@ public class Game extends Activity implements OnDismissListener{
 	public void onBackPressed() {
 		if(System.currentTimeMillis() - backPressed < DOUBLE_BACK_TIME){
 			super.onBackPressed();
+			finish();
 		}else{
 			backPressed = System.currentTimeMillis();
 			Toast.makeText(this, "Press backbutton again to exit", Toast.LENGTH_LONG).show();

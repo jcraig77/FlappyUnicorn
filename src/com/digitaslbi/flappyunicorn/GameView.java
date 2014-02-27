@@ -3,18 +3,14 @@ package com.digitaslbi.flappyunicorn;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.digitaslbi.flappyunicorn.R;
-
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.hardware.SensorManager;
-import android.view.MotionEvent;
+import android.view.KeyEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
-import android.view.View;
-import android.view.View.OnTouchListener;
 
 public class GameView extends SurfaceView implements Runnable{
 	
@@ -49,6 +45,7 @@ public class GameView extends SurfaceView implements Runnable{
 				
 //		setOnTouchListener(this);
 	}
+
 	
 //	@Override
 //	public boolean onTouch(View v, MotionEvent event) {
@@ -69,6 +66,16 @@ public class GameView extends SurfaceView implements Runnable{
 //		return true;
 //	}
 	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if(keyCode == KeyEvent.KEYCODE_BACK){
+			android.widget.Toast.makeText(this.game, "swiped down", android.widget.Toast.LENGTH_LONG).show();
+			this.game.finish();
+		}
+		return false;
+	}
+
+
 	public void run() {
 		//draw at least once
 		draw();
